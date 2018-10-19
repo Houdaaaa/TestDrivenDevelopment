@@ -4,7 +4,7 @@ Connecting at game.
 
 ## Precondition:
 
-The [checkLogin](/use cases/checkLogin.md) must be valid.
+The checkLogin must be valid.
 
 ## Postcondition:
 
