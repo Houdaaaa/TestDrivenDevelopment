@@ -1,4 +1,4 @@
-## Objective: {#login-case}
+## Objective:
 
 Verify that the login is valid.
 
