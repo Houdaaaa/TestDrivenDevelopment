@@ -1,4 +1,8 @@
-[Login](/documentation/diagrams/use cases/login.md)
+# Table of contents
 
-[CheckLogin](/documentation/diagrams/use cases/checkLogin.md)
+#### [Login](/documentation/diagrams/use cases/login.md)
+
+#### [CheckLogin](/documentation/diagrams/use cases/checkLogin.md)
+
+
 
