@@ -1,8 +1,7 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.apache.commons.io.FileUtils;
-import java.io.File;
 import java.util.*;
+import javafx.util.*;
 
 public class SentenceMystery extends TypeMystery{
 
@@ -10,14 +9,15 @@ public class SentenceMystery extends TypeMystery{
 
     public void NextMystery() {
         // TODO: 25-10-18 Set the instance variables in game when game is made
-        Map test = ChoiceMystery("easy");
-        
-        System.out.print(test);
+        Pair<String, List<String>> test = ChoiceMystery("easy");
+        List<String> sentence = test.getValue();
+
+        System.out.print(sentence.get(0));
     }
 
-    protected Map<String, List<String>> ChoiceMystery(String difficulty) {
-        Map response = new HashMap();
+    public Pair<String, List<String>> ChoiceMystery(String difficulty) {
         List statement = new ArrayList();
+        String word = null;
         Random random = new Random();
 
         try {
@@ -27,23 +27,13 @@ public class SentenceMystery extends TypeMystery{
             int randMystery = random.nextInt(diff.length());
             JSONObject mystery = diff.getJSONObject(randMystery);
 
+            word = (String) mystery.get("word");
             statement.add(mystery.get("sentence"));
-            response.put(mystery.get("word"), statement);
+            statement.add(mystery.get("sentence"));
+
         }
         catch (Exception e) { System.out.print(e); }
 
-        return response;
-    }
-
-    private JSONObject ReadDatabase(String path) {
-        try {
-            File file = new File(path);
-            String content = FileUtils.readFileToString(file, "utf-8");
-
-            return new JSONObject(content);
-        }
-        catch (Exception e) { System.out.print(e); }
-
-        return new JSONObject();
+        return new Pair<String, List<String>>(word, statement);
     }
 }
