@@ -28,8 +28,9 @@ public class SentenceMystery extends TypeMystery{
             String content = FileUtils.readFileToString(file, "utf-8");
 
             return new JSONObject(content);
-
         }
         catch (Exception e) { System.out.print(e); }
+
+        return new JSONObject();
     }
 }
