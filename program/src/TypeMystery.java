@@ -1,5 +1,7 @@
+import java.util.*;
+
 public abstract class TypeMystery {
     public abstract void NextMystery();
 
-//    public abstract Map<string, string> ChoiceMystery(Difficulty difficulty);
+    protected abstract Map<String, List<String>> ChoiceMystery(String difficulty);
 }
