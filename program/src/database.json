@@ -1,0 +1,14 @@
+{
+  "easy" : {
+    "sentenceMode": [
+      {
+        "word": "silence",
+        "sentence": "En prononcant son nom tu le detruis"
+      },
+      {
+        "word": "dodo",
+        "sentence": "Éteint, il apparaît lorsque les enfants ont sommeil"
+      }
+    ]
+  }
+}
