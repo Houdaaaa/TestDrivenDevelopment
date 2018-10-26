@@ -10,9 +10,10 @@ public class SentenceMystery extends TypeMystery{
     public void NextMystery() {
         // TODO: 25-10-18 Set the instance variables in game when game is made
         Pair<String, List<String>> test = ChoiceMystery("easy");
-        List<String> sentence = test.getValue();
+        ArrayList<Character> displayLetters = TypeMystery.ChoiceLetters(test.getKey());
 
-        System.out.print(sentence.get(0));
+        System.out.print(test.getKey());
+        System.out.print(displayLetters);
     }
 
     public Pair<String, List<String>> ChoiceMystery(String difficulty) {
