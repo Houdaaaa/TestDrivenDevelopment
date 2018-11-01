@@ -7,6 +7,7 @@ public class SentenceMystery extends TypeMystery{
 
     public SentenceMystery() {}
 
+    @Override
     public void NextMystery() {
         // TODO: 25-10-18 Set the instance variables in game when game is made
         Pair<String, List<String>> test = ChoiceMystery("easy");
@@ -16,8 +17,9 @@ public class SentenceMystery extends TypeMystery{
         System.out.print(displayLetters);
     }
 
+    @Override
     public Pair<String, List<String>> ChoiceMystery(String difficulty) {
-        List statement = new ArrayList();
+        List<String> statement = new ArrayList<String>();
         String word = null;
         Random random = new Random();
 

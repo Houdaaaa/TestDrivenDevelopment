@@ -6,7 +6,6 @@ import java.io.File;
 
 public abstract class TypeMystery {
     public abstract void NextMystery();
-
     public abstract Pair<String, List<String>> ChoiceMystery(String difficulty);
 
     /* For players to find the mystery word, it is necessary to mix the letters of the word with mixed letters of the alphabet
@@ -44,7 +43,7 @@ public abstract class TypeMystery {
      * @param  path  the path to the database
      * @return       a JSONObject representing the database
      */
-    public JSONObject ReadDatabase(String path) {
+    protected static JSONObject ReadDatabase(String path) {
         try {
             File file = new File(path);
             String content = FileUtils.readFileToString(file, "utf-8");
