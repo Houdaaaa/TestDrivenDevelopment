@@ -8,13 +8,13 @@ public class SentenceMystery extends TypeMystery{
     public SentenceMystery() {}
 
     @Override
-    public void NextMystery() {
-        // TODO: 25-10-18 Set the instance variables in game when game is made
-        Pair<String, List<String>> test = ChoiceMystery("easy");
-        ArrayList<Character> displayLetters = TypeMystery.ChoiceLetters(test.getKey());
+    public void NextMystery(Game game) {
+        // TODO: 01-11-18 Regarder si ça fonctionne bien quand game est acquis
+        Pair<String, List<String>> mystery = ChoiceMystery("easy");
+        ArrayList<Character> displayLetters = TypeMystery.ChoiceLetters(mystery.getKey());
 
-        System.out.print(test.getKey());
-        System.out.print(displayLetters);
+        game.setMystery(mystery);
+        game.setDisplayLetters(displayLetters);
     }
 
     @Override
