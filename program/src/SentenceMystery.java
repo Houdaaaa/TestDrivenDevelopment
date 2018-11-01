@@ -19,12 +19,12 @@ public class SentenceMystery extends TypeMystery{
 
     @Override
     public Pair<String, List<String>> ChoiceMystery(String difficulty) {
-        List<String> statement = new ArrayList<String>();
+        List statement = new ArrayList<>();
         String word = null;
         Random random = new Random();
 
         try {
-            JSONObject db = ReadDatabase("src/database.json");
+            JSONObject db = Utils.ReadDatabase("src/database.json");
             JSONArray diff = db.getJSONObject(difficulty).getJSONArray("sentenceMode");
 
             int randMystery = random.nextInt(diff.length());
