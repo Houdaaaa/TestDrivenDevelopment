@@ -3,9 +3,6 @@ import javafx.util.*;
 
 public class Main {
     public static void main(String [] args) {
-        SentenceMystery test = new SentenceMystery();
-
-
 
         test.NextMystery();
 
@@ -18,6 +15,5 @@ public class Main {
         Game game = new Game(diff, typeMystery,mystery);
         game.Login("Houda", "cool");
         //game.Save();
-
     }
 }

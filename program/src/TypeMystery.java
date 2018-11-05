@@ -1,12 +1,20 @@
 import java.util.*;
 import javafx.util.*;
-import org.json.JSONObject;
-import org.apache.commons.io.FileUtils;
-import java.io.File;
 
 public abstract class TypeMystery {
-    public abstract void NextMystery();
 
+    /* Set the necessary information to launch a game tour
+     *
+     * @param  game  represents information related to the game
+     * @return void
+     */
+    public abstract void NextMystery(Game game);
+
+    /* Chooses a mystery at random depending on the difficulty and mode of play
+     *
+     * @param  difficulty  easy, intermediate, advanced
+     * @return             key: the word to find; value: a clue list to find the word
+     */
     public abstract Pair<String, List<String>> ChoiceMystery(String difficulty);
 
     /* For players to find the mystery word, it is necessary to mix the letters of the word with mixed letters of the alphabet
@@ -31,7 +39,7 @@ public abstract class TypeMystery {
         for (int i=0; i<word.length(); i+=1) {
             response.add(wordArray.get(i));
 
-            for (int j=0; j<(14-word.length())/word.length(); j++) {
+            for (int j=0; j<(12-word.length())/word.length(); j++) {
                 int randLetter = random.nextInt(alphabet.size());
                 response.add(alphabet.get(randLetter));
             }
@@ -39,20 +47,4 @@ public abstract class TypeMystery {
         return response;
     }
 
-    /* This method avoids duplicating the database opening code for subclasses
-     *
-     * @param  path  the path to the database
-     * @return       a JSONObject representing the database
-     */
-    public JSONObject ReadDatabase(String path) {
-        try {
-            File file = new File(path);
-            String content = FileUtils.readFileToString(file, "utf-8");
-
-            return new JSONObject(content);
-        }
-        catch (Exception e) { System.out.print(e); }
-
-        return new JSONObject();
-    }
 }
