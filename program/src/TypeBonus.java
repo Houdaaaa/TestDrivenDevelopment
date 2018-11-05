@@ -13,5 +13,11 @@ public abstract class TypeBonus {
      *
      * @return  true: the bonus is used, false: the bonus does not used
      */
-    public boolean IsAvalaible() { return used; }
+    public boolean IsAvailable() { return used; }
+
+    /* When we choose a new mystery, we reset the usage value
+     *
+     * @return void
+     */
+    public void ResetUsed() { used = true; }
 }
