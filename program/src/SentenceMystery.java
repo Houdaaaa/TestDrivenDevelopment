@@ -40,11 +40,6 @@ public class SentenceMystery extends TypeMystery{
         }
         catch (Exception e) { System.out.print(e); }
 
-        ArrayList<TypeBonus> bonusList = game.GetBonusList();
-        for (int i=0; i<bonusList.size(); i++) {
-            bonusList.get(i).ResetUsed();
-        }
-
         return new Pair<String, List<String>>(word, statement);
     }
 }
