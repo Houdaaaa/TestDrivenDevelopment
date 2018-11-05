@@ -39,7 +39,7 @@ public abstract class TypeMystery {
         for (int i=0; i<word.length(); i+=1) {
             response.add(wordArray.get(i));
 
-            for (int j=0; j<(12-word.length())/word.length(); j++) {
+            for (int j=0; j<(14-word.length())/word.length(); j++) {
                 int randLetter = random.nextInt(alphabet.size());
                 response.add(alphabet.get(randLetter));
             }

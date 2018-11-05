@@ -1,6 +1,6 @@
 
 public abstract class TypeBonus {
-    protected boolean used = false;
+    protected boolean used = true;
 
     /* Apply the chosen bonus to the game status
      *
@@ -11,7 +11,7 @@ public abstract class TypeBonus {
 
     /* Returns if the bonus is used or not
      *
-     * @return  true: the bonus is used, false: the bonus does not used
+     * @return  true: the bonus does not used, false: the bonus is used
      */
     public boolean IsAvailable() { return used; }
 
