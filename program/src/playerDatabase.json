@@ -1,11 +1,1 @@
-{
-  "Houda" : {
-    "password" : "cool",
-    "coins" : 5
-  },
-  "Ludo" : {
-    "password" : "678910",
-    "coins" : 6
-  }
-
-}
+{"Ludo":{"password":"678910","coins":6},"Houda":{"password":"cool","coins":10}}

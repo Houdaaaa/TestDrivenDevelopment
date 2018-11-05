@@ -14,7 +14,12 @@ public class SentenceMystery extends TypeMystery{
         ArrayList<Character> displayLetters = TypeMystery.ChoiceLetters(mystery.getKey());
 
         game.SetMystery(mystery);
-        game.SetDisplayLetters(displayLetters);
+        game.SetLetterDisplay(displayLetters);
+
+        ArrayList<TypeBonus> bonusList = game.GetBonusList();
+        for (int i=0; i<bonusList.size(); i++) {
+            bonusList.get(i).ResetUsed();
+        }
     }
 
     @Override
@@ -32,8 +37,6 @@ public class SentenceMystery extends TypeMystery{
 
             word = (String) mystery.get("word");
             statement.add(mystery.get("sentence"));
-            statement.add(mystery.get("sentence"));
-
         }
         catch (Exception e) { System.out.print(e); }
 
