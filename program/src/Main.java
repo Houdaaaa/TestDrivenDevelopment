@@ -4,16 +4,25 @@ import javafx.util.*;
 public class Main {
     public static void main(String [] args) {
 
-        test.NextMystery();
+        SentenceMystery typeMystery = new SentenceMystery();
+        Difficulty difficulty = new Difficulty("easy");
 
-
-        Difficulty diff = new Difficulty("easy");
-        TypeMystery typeMystery = test;
-
-        String[] ok = {"one", "two"};
-        Pair<String,String[]> mystery = new Pair<String, String[]>("Hello",ok);
-        Game game = new Game(diff, typeMystery,mystery);
+        Game game = new Game(difficulty, typeMystery);
+        game.SetTypeMystery(typeMystery);
         game.Login("Houda", "cool");
-        //game.Save();
+
+        game.NextMystery();
+
+        ArrayList<Character> displayLetters = game.GetLetterDisplay();
+        System.out.println(displayLetters);
+
+        System.out.println(game.GetBonusList().get(0).IsAvailable());
+
+        game.GetBonusList().get(0).ApplyBonus(game);
+        System.out.println(displayLetters);
+
+        System.out.println(game.GetBonusList().get(0).IsAvailable());
+
+        game.Save();
     }
 }

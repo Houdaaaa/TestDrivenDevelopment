@@ -1,23 +1,25 @@
 import org.json.JSONObject;
 import javafx.util.*;
+
+import javax.rmi.CORBA.Util;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
     private Player player;
     private Difficulty difficulty;
     private TypeMystery typeMystery;
-    private Pair<String, String[]> mystery ;
+    private Pair<String, List<String>> mystery ;
     private ArrayList<Character> letterDisplay;
+    private ArrayList<TypeBonus> bonusList = new ArrayList<TypeBonus>();
 
-    //private Bonus BonusList[];
-
-    public Game(Difficulty difficulty, TypeMystery typeMystery, Pair<String, String[]> mystery){ //Ajouter Player
+    public Game(Difficulty difficulty, TypeMystery typeMystery){ //Ajouter Player
         this.difficulty = difficulty;
         this.typeMystery = typeMystery;
-        this.mystery = mystery;
 
+        this.bonusList.add(new RemoveLetter());
     }
 
     /* To play an other gameMystery
@@ -25,10 +27,9 @@ public class Game {
      * @param
      * @return void
      */
-    public void NextMystery(){
-        //typeMystery.NextMystery(this);
+    public void NextMystery() {
+        typeMystery.NextMystery(this);
     }
-
 
     public void SetLetterDisplay(ArrayList<Character> letterDisplay) {
         this.letterDisplay = letterDisplay;
@@ -50,13 +51,15 @@ public class Game {
         return this.difficulty;
     }
 
-    public void SetMystery(Pair<String, String[]> mystery){
+    public void SetMystery(Pair<String, List<String>> mystery){
         this.mystery = mystery;
     }
 
-    public Pair<String, String[]> GetMystery() {
-        return mystery;
-    }
+    public Pair<String, List<String>> GetMystery() { return mystery; }
+
+    public ArrayList<TypeBonus> GetBonusList() { return bonusList; }
+
+    public Player GetPlayer() { return player; }
 
     /* Connect and initialize a player
      *
@@ -98,7 +101,7 @@ public class Game {
         JSONObject objectNull = new JSONObject();
 
         try {
-            JSONObject db = typeMystery.ReadDatabase("src/playerDatabase.json");
+            JSONObject db = Utils.ReadDatabase("src/playerDatabase.json");
 
             JSONObject playerData = db.getJSONObject(pseudo);
             String pass = (String) playerData.get("password");
@@ -123,7 +126,7 @@ public class Game {
      */
     public void Save(){
         try{
-            JSONObject db = typeMystery.ReadDatabase("src/playerDatabase.json");
+            JSONObject db = Utils.ReadDatabase("src/playerDatabase.json");
             JSONObject playerData = db.getJSONObject(player.GetPseudo());
             playerData.put("coins",player.GetCoins());
 

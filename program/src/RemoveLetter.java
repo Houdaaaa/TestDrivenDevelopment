@@ -7,10 +7,13 @@ public class RemoveLetter extends TypeBonus {
 
     @Override
     public void ApplyBonus(Game game) {
+
+        game.GetDifficulty().RetryCoins(game.GetPlayer());
+
         Random random = new Random();
 
         String word = game.GetMystery().getKey();
-        ArrayList<Character> displayLetters = game.GetDisplayLetters();
+        ArrayList<Character> displayLetters = game.GetLetterDisplay();
 
         while (true) {
             int randInt = random.nextInt(displayLetters.size());
@@ -22,7 +25,8 @@ public class RemoveLetter extends TypeBonus {
             }
         }
 
-        used = true;
-        game.SetDisplayLetters(displayLetters);
+
+        used = false;
+        game.SetLetterDisplay(displayLetters);
     }
 }
