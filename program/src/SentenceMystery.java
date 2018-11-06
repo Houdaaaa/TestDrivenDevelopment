@@ -9,8 +9,8 @@ public class SentenceMystery extends TypeMystery{
 
     @Override
     public void NextMystery(Game game) {
-        // TODO: 01-11-18 Regarder si ça fonctionne bien quand game est acquis
-        Pair<String, List<String>> mystery = ChoiceMystery("easy");
+        Difficulty difficulty = game.GetDifficulty();
+        Pair<String, List<String>> mystery = ChoiceMystery(difficulty.GetName());
         ArrayList<Character> displayLetters = TypeMystery.ChoiceLetters(mystery.getKey());
 
         game.SetMystery(mystery);
