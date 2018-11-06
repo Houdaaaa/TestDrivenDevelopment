@@ -7,26 +7,28 @@ public class RemoveLetter extends TypeBonus {
 
     @Override
     public void ApplyBonus(Game game) {
+        if (Utils.CheckCoins(game.GetPlayer(), game.GetDifficulty())) {
+            game.GetDifficulty().RetryCoins(game.GetPlayer());
+            Random random = new Random();
 
-        game.GetDifficulty().RetryCoins(game.GetPlayer());
+            String word = game.GetMystery().getKey();
+            ArrayList<Character> displayLetters = game.GetLetterDisplay();
 
-        Random random = new Random();
+            while (true) {
+                int randInt = random.nextInt(displayLetters.size());
+                char randLetter = displayLetters.get(randInt);
 
-        String word = game.GetMystery().getKey();
-        ArrayList<Character> displayLetters = game.GetLetterDisplay();
-
-        while (true) {
-            int randInt = random.nextInt(displayLetters.size());
-            char randLetter = displayLetters.get(randInt);
-
-            if (word.indexOf(randLetter) == -1) {
-                displayLetters.remove(randInt);
-                break;
+                if (word.indexOf(randLetter) == -1) {
+                    displayLetters.remove(randInt);
+                    break;
+                }
             }
+
+            used = false;
+            game.SetLetterDisplay(displayLetters);
         }
-
-
-        used = false;
-        game.SetLetterDisplay(displayLetters);
+        else {
+            System.out.println("Pas assez de pieces");
+        }
     }
 }

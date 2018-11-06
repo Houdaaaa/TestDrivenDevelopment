@@ -19,6 +19,8 @@ public class Difficulty {
         return this.name;
     }
 
+    public int GetLevelCoin() { return this.levelCoin; }
+
     public void SetName(String name){
         this.name = name;
     }
@@ -34,7 +36,6 @@ public class Difficulty {
         player.SetCoins(newCoins);
 
     }
-
 
     /* Add coins of a player
      *

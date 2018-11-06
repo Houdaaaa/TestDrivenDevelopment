@@ -20,4 +20,17 @@ class Utils {
 
         return new JSONObject();
     }
+
+    /* Check if the player ase enough coins for using bonus
+     *
+     * @param  player      the game's player
+     * @param  difficulty  the game's difficulty
+     * @return boolean     true: if the player can use; false: if the user can not use
+     */
+    public static boolean CheckCoins (Player player, Difficulty difficulty) {
+        int playerCoins = player.GetCoins();
+        int levelCoin = difficulty.GetLevelCoin();
+
+        return playerCoins > levelCoin;
+    }
 }
