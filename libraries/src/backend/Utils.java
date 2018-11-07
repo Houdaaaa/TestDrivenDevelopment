@@ -1,10 +1,13 @@
+package backend;
+
 import org.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
-class Utils {
+public class Utils {
+    public final static String url = System.getProperty("user.dir");
 
     /* This method avoids duplicating the database opening code for subclasses
      *
