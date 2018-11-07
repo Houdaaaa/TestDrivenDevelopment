@@ -5,7 +5,7 @@ public class Main {
     public static void main(String [] args) {
 
         SentenceMystery typeMystery = new SentenceMystery();
-        Difficulty difficulty = new Difficulty("easy");
+        Difficulty difficulty = new Difficulty("advanced");
 
         Game game = new Game(difficulty, typeMystery);
         game.SetTypeMystery(typeMystery);
