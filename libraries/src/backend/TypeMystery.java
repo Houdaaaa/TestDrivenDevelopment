@@ -1,3 +1,5 @@
+package backend;
+
 import java.util.*;
 import javafx.util.*;
 
@@ -27,24 +29,20 @@ public abstract class TypeMystery {
         ArrayList<Character> alphabet = new ArrayList<Character>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
                                                                                 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
                                                                                 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'));
-        ArrayList<Character> wordArray = new ArrayList<Character>();
         ArrayList<Character> response = new ArrayList<Character>();
 
         //breaks down the word to be found
         for (char c : word.toCharArray()) {
-            wordArray.add(c);
+            response.add(c);
         }
 
         //build response with a random letters and word's letter
-        for (int i=0; i<word.length(); i+=1) {
-            response.add(wordArray.get(i));
-
-            for (int j=0; j<(14-word.length())/word.length(); j++) {
-                int randLetter = random.nextInt(alphabet.size());
-                response.add(alphabet.get(randLetter));
-            }
+        for (int i=0; i<12-word.length(); i+=1) {
+            int randLetter = random.nextInt(alphabet.size());
+            response.add(alphabet.get(randLetter));
         }
-        return response;
+
+        return Utils.MixArray(response);
     }
 
 }

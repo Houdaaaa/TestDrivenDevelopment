@@ -1,3 +1,5 @@
+package backend;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.*;
@@ -9,8 +11,8 @@ public class SentenceMystery extends TypeMystery{
 
     @Override
     public void NextMystery(Game game) {
-        // TODO: 01-11-18 Regarder si ça fonctionne bien quand game est acquis
-        Pair<String, List<String>> mystery = ChoiceMystery("easy");
+        Difficulty difficulty = game.GetDifficulty();
+        Pair<String, List<String>> mystery = ChoiceMystery(difficulty.GetName());
         ArrayList<Character> displayLetters = TypeMystery.ChoiceLetters(mystery.getKey());
 
         game.SetMystery(mystery);
@@ -29,7 +31,7 @@ public class SentenceMystery extends TypeMystery{
         Random random = new Random();
 
         try {
-            JSONObject db = Utils.ReadDatabase("src/database.json");
+            JSONObject db = Utils.ReadDatabase(Utils.url+"/libraries/database.json");
             JSONArray diff = db.getJSONObject(difficulty).getJSONArray("sentenceMode");
 
             int randMystery = random.nextInt(diff.length());
