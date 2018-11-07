@@ -1,6 +1,8 @@
 import org.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Random;
 
 class Utils {
 
@@ -32,5 +34,23 @@ class Utils {
         int levelCoin = difficulty.GetLevelCoin();
 
         return playerCoins > levelCoin;
+    }
+
+    /* Mix an array (Fisher-Yates algorithm)
+     *
+     * @param  array                the initial array of char
+     * @return ArrayList<Character> the array mixed
+     */
+    public static ArrayList<Character> MixArray(ArrayList<Character> array) {
+        Random random = new Random();
+
+        for (int i=array.size()-1; i>0; i--) {
+            int randPos = random.nextInt(i);
+            char temp = array.get(i);
+            array.set(i, array.get(randPos));
+            array.set(randPos, temp);
+        }
+
+        return array;
     }
 }
