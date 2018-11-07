@@ -31,7 +31,7 @@ public class SentenceMystery extends TypeMystery{
         Random random = new Random();
 
         try {
-            JSONObject db = Utils.ReadDatabase(Utils.url+"/libraries/database.json");
+            JSONObject db = Utils.ReadDatabase(Utils.url+"/database.json");
             JSONArray diff = db.getJSONObject(difficulty).getJSONArray("sentenceMode");
 
             int randMystery = random.nextInt(diff.length());
