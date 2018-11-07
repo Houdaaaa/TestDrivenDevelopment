@@ -1,3 +1,5 @@
+package backend;
+
 import org.json.JSONObject;
 import javafx.util.*;
 
@@ -101,7 +103,7 @@ public class Game {
         JSONObject objectNull = new JSONObject();
 
         try {
-            JSONObject db = Utils.ReadDatabase("src/playerDatabase.json");
+            JSONObject db = Utils.ReadDatabase(Utils.url+"/libraries/playerDatabase.json");
 
             JSONObject playerData = db.getJSONObject(pseudo);
             String pass = (String) playerData.get("password");
@@ -126,11 +128,11 @@ public class Game {
      */
     public void Save(){
         try{
-            JSONObject db = Utils.ReadDatabase("src/playerDatabase.json");
+            JSONObject db = Utils.ReadDatabase(Utils.url+"/libraries/playerDatabase.json");
             JSONObject playerData = db.getJSONObject(player.GetPseudo());
             playerData.put("coins",player.GetCoins());
 
-            try (FileWriter files = new FileWriter("src/playerDatabase.json"))
+            try (FileWriter files = new FileWriter(Utils.url+"/libraries/playerDatabase.json"))
             {
                 files.write(db.toString());
                 System.out.println("\nSuccessfully updated json object to file !");

@@ -1,3 +1,4 @@
+package backend;
 
 public abstract class TypeBonus {
     protected boolean used = true;
